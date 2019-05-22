@@ -24,7 +24,7 @@
 #define MAX_IP_LEN 16
 #define MAX_BUF_SIZE 2048
 
-char serverIp[MAX_IP_LEN] = "10.191.4.178";
+char serverIp[MAX_IP_LEN] = "127.0.0.1";
 unsigned short serverPort = 30008;
 
 int main(int argc, char * argv[]) {
