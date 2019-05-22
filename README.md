@@ -30,21 +30,12 @@
 ### 4. 离线更新服务Demo部署指引
 
 1. 解压 build/local_demo.tgz 至指定服务部署目录
-
 2. 修改 local_demo/script/update_monitor.sh 脚本的DIR变量为指定服务部署目录
-
 3. 替换 local_demo/conf/licence.conf 为本机申请的licence.conf
-
 4. 执行 local_demo/script/update_monitor.sh 脚本，启动服务
-
 5. 观察 local_demo/script/online_update.log 日志，查看是否异常
-
-6. 修改 local_demo/script/sync_ftp.sh 脚本配置函数变量
-
-   (1) 修改DIR变量为指定服务部署目录
-
-   (2) 修改MAC变量为licence.conf的注册MAC地址
-
-   (3) 修改FTP变量为本地FTP目录
-
+6. 修改 local_demo/script/sync_ftp.sh 脚本配置函数变量</br>
+   (1) 修改DIR变量为指定服务部署目录</br>
+   (2) 修改MAC变量为licence.conf的注册MAC地址</br>
+   (3) 修改FTP变量为本地FTP目录</br>
 7. 启动 local_demo/script/sync_ftp.sh 脚本，查看同步是否异常
