@@ -64,15 +64,12 @@ int main(int argc, char * argv[]) {
         return -3;
     }
 
-    unsigned int uiInsertDataCnt = 0;
-    for (int i=0; i < 3; i++) {
-        printf("i=%d start:\n", i);
+    while (true) {
+    	unsigned int uiInsertDataCnt = 0;
         if (UrlLibLoad(pDataDir, &uiInsertDataCnt, &iErrCode, false))
-            printf("UrlLibLoad Success\tLoad Cnt : %u  i=%d\n",
-                   uiInsertDataCnt, i);
+            printf("UrlLibLoad Success\tLoad Cnt : %u\n", uiInsertDataCnt);
         else
-            printf("UrlLibLoad falied\tErrCode: %#x i=%d\n",
-                   iErrCode, i);
+            printf("UrlLibLoad falied\tErrCode: %#x\n", iErrCode);
         usleep(60*1000*1000);
     }
 
