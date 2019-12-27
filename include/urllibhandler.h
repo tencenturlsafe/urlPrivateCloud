@@ -1,37 +1,27 @@
-/**
- *  Copyright (c) 2018 Tencent, Inc. All rights reserved.
- *
- *     Filename: urllibhandler.h
- *      Company: Tencent
- *  Description:
- */
-
-#ifndef URLLIBHANDLER_H_
-#define URLLIBHANDLER_H_
+#ifndef _URL_LIB_HANDLER_H
+#define _URL_LIB_HANDLER_H
 
 #include <stdint.h>
 #include <stdbool.h>
 
-typedef enum {
+typedef enum
+{
     URL_TYPE_GRAY = 1,
     URL_TYPE_BLACK = 2,
     URL_TYPE_WHITE_NO_QQ = 3,
     URL_TYPE_WHITE_QQ = 4
 } E_URL_TYPE;
 
-typedef enum {
-    URL_LEVEL_URL = 1,  // a.qq.com/b/c.html?d=1&e=2
-    URL_LEVEL_CGI = 2,  // a.qq.com/b/c.html
-    URL_LEVEL_PATH = 3,  // a.qq.com/b
-    URL_LEVEL_HOST = 4,  // a.qq.com
-    URL_LEVEL_DOMAIN = 5  // qq.com
+typedef enum
+{
+    URL_LEVEL_URL = 1,   // mail.qq.com/cgi-bin/frame_html?sid=Uch_hMabTYPCAT1q&r=354da9218e017a8b87a272529853a507
+    URL_LEVEL_CGI = 2,   // mail.qq.com/cgi-bin/frame_html
+    URL_LEVEL_PATH = 3,  // mail.qq.com/cgi-bin
+    URL_LEVEL_HOST = 4,  // mail.qq.com
+    URL_LEVEL_DOMAIN = 5 // qq.com
 } E_URL_LEVEL;
 
 
- /**
-  * @brief Get UrlLib Version
-  * @details
-  */
 const char * UrlLibVersion();
 
  /**
@@ -42,11 +32,10 @@ const char * UrlLibVersion();
   * @param uiHashTableMaxCnt urllib's cnt (minimum count is 20*500)
   * @param szConfFile licence conf name
   * @param iErrCode error code if init failed
-  *
+  * 
   * @return true: successfully init. false: fail init.
   */
-bool UrlLibInit(uint32_t uiShmKey, uint32_t uiHashTableMaxCnt,
-                const char * szConfFile, int *iErrCode);
+bool UrlLibInit(uint32_t uiShmKey, uint32_t uiHashTableMaxCnt,const char * szConfFile,int *iErrCode);
 
  /**
   * @brief Init UrlLib by Memory size
@@ -59,8 +48,7 @@ bool UrlLibInit(uint32_t uiShmKey, uint32_t uiHashTableMaxCnt,
   *
   * @return true: successfully init. false: fail init.
   */
-bool UrlLibInitByMb(uint32_t uiShmKey, uint32_t uiMbSize,
-                    const char * szConfFile, int *iErrCode);
+bool UrlLibInitByMb(uint32_t uiShmKey, uint32_t uiMbSize,const char * szConfFile,int *iErrCode);
 
  /**
   * @brief Upgrade Url lib once.
@@ -70,11 +58,10 @@ bool UrlLibInitByMb(uint32_t uiShmKey, uint32_t uiMbSize,
   * @param uiInsertDataCnt : Data count inserted during the update process
   * @param iErrorCode:  if UrlLibUpgrade fail, the code is for tencent to find the reason
   * @param uiNextTime: if iErrCode equal 0,it should be sleep uiNextTime and then upgrade
-  *
+  * 
   * @return true: successfully upgrade. false: fail upgrade.
   */
-bool UrlLibUpgrade(const char * szTmpFilePath, unsigned int *uiInsertDataCnt,
-                   int *iErrCode, unsigned int * uiNextTime);
+bool UrlLibUpgrade(const char * szTmpFilePath,unsigned int *uiInsertDataCnt,int *iErrCode,unsigned int * uiNextTime);
 
  /**
   * @brief Used to load offline file (dowbloaded from join.urlsec.qq.com) into Urllib
@@ -87,8 +74,7 @@ bool UrlLibUpgrade(const char * szTmpFilePath, unsigned int *uiInsertDataCnt,
   *
   * @return true: successfully load. false: fail load.
   */
-bool UrlLibLoad(const char * szFileDir, unsigned int *uiLoadCnt,
-                int *iErrCode, bool bClearBeforeLoad);
+bool UrlLibLoad(const char * szFileDir,unsigned int *uiLoadCnt,int *iErrCode ,bool bClearBeforeLoad);
 
  /**
   * @brief  Check Url's Status with Eviltype
@@ -99,15 +85,13 @@ bool UrlLibLoad(const char * szFileDir, unsigned int *uiLoadCnt,
   * @param uiEviltype: Url's eviltype when url is black, refer docs
   * @param uiLevel: Url's evil level when url is black, Refer E_URL_LEVEL above
   * @param szParameter: if black url take this parameter, will return unknown
-  *
+  * 
   * @return 0x0a：licence.conf expired
   *          0x51: the library is not updated more than seven days
   *          0x52: the url status is unknown
-  *          0x00: detect successful
+  *          0x00: detect successful    
   */
-int UrlLibDetect(const char * szUrl, unsigned int * uiUrlType,
-                 unsigned int * uiEvilType, unsigned int * uiLevel,
-                 char * szParameter);
+int UrlLibDetect(const char * szUrl,unsigned int * uiUrlType,unsigned int * uiEvilType, unsigned int * uiLevel,char * szParameter);
 
  /**
   * @brief Conversion EvilType to EvilClass
@@ -120,13 +104,13 @@ int UrlLibDetect(const char * szUrl, unsigned int * uiUrlType,
   *          0x61: error uiEvilType.
   *          0x62: not load conv file.
   */
-int convType2Class(unsigned int uiEvilType, unsigned int * uiEvilClass);
+int convType2Class(unsigned int uiEvilType,unsigned int * uiEvilClass);
 
  /**
   * @brief Clear Tencent or User UrlLib
-  *
+  * 
   * @param index 0 for Tencent UrlLib; 1 for User UrlLib
-  *
+  * 
   * @details both tencent's data and user define data can be cleared
   *         when this api is invoked
   */
@@ -134,9 +118,9 @@ void UrlLibClear(unsigned short index);
 
 /**
  * @brief Show UrlLib memory use
- *
+ * 
  * @param index 0 for Tencent UrlLib; 1 for User UrlLib
- *
+ * 
  * @return percentage of memory used for diagnose purpose
  */
 int UrlLibShowUse(unsigned short index);
@@ -149,11 +133,10 @@ int UrlLibShowUse(unsigned short index);
   * @param uiShmKey shared memory's key to identify user define url lib(Can not be the same as UrlLibInit() or UrlLibInitByMb() uiShmKey)
   * @param uiHashTableMaxCnt user define urllib's cnt (minimum count is 20*500)
   * @param iErrCode error code if init failed
-  *
+  * 
   * @return true: successfully init. false: fail init.
   */
-bool UserDefineInit(uint32_t uiShmKey, uint32_t uiHashTableMaxCnt,
-                    int *iErrCode);
+bool UserDefineInit(uint32_t uiShmKey, uint32_t uiHashTableMaxCnt,int *iErrCode);
 
  /**
   * @brief Insert User Define Elements into UrlLib
@@ -163,15 +146,15 @@ bool UserDefineInit(uint32_t uiShmKey, uint32_t uiHashTableMaxCnt,
   * @param szUrl url to be inserted
   * @param int uiLevel: Ref E_URL_LEVEL above
   * @param int uiUrlType: Ref E_URL_TYPE above
-  *
+  * @param int uiEvilType: Ref user-define eviltype
+  * 
   * @return  0x00: insert success
   *         0x31: bad szUrl
   *         0x32: bad uiLevel
   *         0x33: bad uiUrlType
   */
 
-int InsertUserDefineEle(const char * szUrl, unsigned int uiLevel,
-                        unsigned int uiUrlType);
+int InsertUserDefineEle(const char * szUrl, unsigned int uiLevel, unsigned int uiUrlType, unsigned int uiEvilType);
 
  /**
   * @brief Delete User Define Elements from UrlLib
@@ -195,19 +178,16 @@ int DeleteUserDefineEle(const char * szUrl, unsigned int uiLevel);
   * @param szUrl url for check
   * @param uiUrlType: urltype of url, refer E_URL_TYPE above
   * @param uiEviltype: Url's eviltype when url is black, refer docs;
-  *                     if just match userDefine data, uiEviltype is 0
+  *                     if just match userDefine data, uiEviltype is user-define
   * @param uiLevel: Url's evil level when url is black, Refer E_URL_LEVEL above
   * @param szParameter: if black url take this parameter, will return unknown;
   *                         if just match userDefine data, do not set up szParameter
-  *
+  * 
   * @return 0x0a：licence.conf expired,just match userDefine data
   *          0x51: the library is not updated more than seven days, userDefine data
   *          0x52: the url status is unknown
   *          0x00: detect successful
   */
-int UrlLibDetectWithUserDefine(const char * szUrl, unsigned int * uiUrlType,
-                               unsigned int * uiEvilType,
-                               unsigned int * uiLevel,
-                               char * szParameter);
+int UrlLibDetectWithUserDefine(const char * szUrl,unsigned int * uiUrlType,unsigned int * uiEvilType, unsigned int * uiLevel, char * szParameter);
 
-#endif  // URLLIBHANDLER_H_
+#endif
