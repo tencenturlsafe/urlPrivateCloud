@@ -74,3 +74,10 @@
 
 
 
+### 7. UDP匹配服务Demo部署指引
+
+1. 解压 build/match_demo.tgz 至指定服务部署目录
+2. 修改 match_demo/script/match_monitor.sh 脚本的DIR变量为指定服务部署目录
+3. 替换 match_demo/conf/licence.conf 为本机申请的licence.conf
+4. 执行 match_demo/script/match_monitor.sh 脚本，启动服务
+5. 执行 match_demo/bin/matchClient 测试客户端进行查询测试，输入参数为待匹配URL
