@@ -71,9 +71,7 @@ bool AnalyzeConf(const char * szConfFile, stConf * pConf) {
                     ++uiPortCnt;
                     pPort = del_both_trim(strtok_r(NULL, ", ", &save));
                 }
-
             } else if (strcasecmp(key, "ThreadNum") == 0) {
-                char * save = NULL;
                 char * value = del_both_trim(strtok_r(NULL, "=", &save));
                 pConf->threadNum = (short)atoi(value);
             }
