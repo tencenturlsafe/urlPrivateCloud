@@ -1,7 +1,7 @@
 EXECUTABLE_QUERY_USERDATA := query_userdata
 EXECUTABLE_INSERT_USERDATA := insert_userdata
 
-LIBS := url_cloud64 curl crypto m rt pthread 
+LIBS := url_cloud64 curl ssl crypto m dl rt pthread z
 INCS := ../../include 
 LIBPATHS := ../../lib
 

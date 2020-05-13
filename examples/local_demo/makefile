@@ -2,7 +2,7 @@ EXECUTABLE_LOCAL_UPDATE := local_update
 EXECUTABLE_SINGLE_MATCH := single_match
 EXECUTABLE_MULTI_MATCH  := multi_match
 
-LIBS := url_cloud64 curl crypto m rt pthread 
+LIBS := url_cloud64 curl ssl crypto m dl rt pthread z
 INCS := ../../include 
 LIBPATHS := ../../lib
 

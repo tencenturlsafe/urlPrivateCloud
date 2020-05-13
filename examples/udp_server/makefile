@@ -1,6 +1,6 @@
 EXECUTABLE := matchServer
 
-LIBS := url_cloud64 curl crypto uv dl z m rt pthread 
+LIBS := uv url_cloud64 curl ssl crypto m dl rt pthread z
 INCS := ./include ../../include ../common 
 LIBPATHS := ./lib ../../lib
 
