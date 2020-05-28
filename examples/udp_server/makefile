@@ -1,6 +1,7 @@
 EXECUTABLE := matchServer
 
-LIBS := uv url_cloud64 curl ssl crypto m dl rt pthread z
+SLIBS := uv url_cloud64 curl ssl crypto
+DLIBS := m dl rt pthread z
 INCS := ./include ../../include ../common 
 LIBPATHS := ./lib ../../lib
 
@@ -17,7 +18,7 @@ OBJS := $(patsubst %.c,%.o,$(SOURCE))
 all: $(EXECUTABLE)
 
 $(EXECUTABLE): $(OBJS)
-	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE) $(OBJS) $(addprefix -l,$(LIBS))
+	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE) $(OBJS) -Wl,-Bstatic $(addprefix -l,$(SLIBS)) -Wl,-Bdynamic $(addprefix -l,$(DLIBS))
 
 clean :
 	rm -rf *.d *.o *.lo $(EXECUTABLE)

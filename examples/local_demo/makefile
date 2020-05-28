@@ -2,12 +2,13 @@ EXECUTABLE_LOCAL_UPDATE := local_update
 EXECUTABLE_SINGLE_MATCH := single_match
 EXECUTABLE_MULTI_MATCH  := multi_match
 
-LIBS := url_cloud64 curl ssl crypto m dl rt pthread z
+SLIBS := url_cloud64 curl ssl crypto
+DLIBS := m dl rt pthread z
 INCS := ../../include 
 LIBPATHS := ../../lib
 
 USER_MARCOS := _POSIX_THREADS _LINUX_OS_ _FILE_OFFSET_BITS=64
-CFLAGS = -Wall -static --no-strict-aliasing -g
+CFLAGS = -Wall --no-strict-aliasing -g
 CC = gcc -std=gnu99
 
 LOCAL_SOURCE := local_update.c
@@ -24,13 +25,13 @@ MULTI_OBJS := $(patsubst %.c,%.o,$(MULTI_SOURCE))
 all: $(EXECUTABLE_LOCAL_UPDATE) $(EXECUTABLE_SINGLE_MATCH) $(EXECUTABLE_MULTI_MATCH)
 
 $(EXECUTABLE_LOCAL_UPDATE): $(LOCAL_OBJS)
-	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE_LOCAL_UPDATE) $(LOCAL_OBJS) $(addprefix -l,$(LIBS))
+	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE_LOCAL_UPDATE) $(LOCAL_OBJS) -Wl,-Bstatic $(addprefix -l,$(SLIBS)) -Wl,-Bdynamic $(addprefix -l,$(DLIBS))
 
 $(EXECUTABLE_SINGLE_MATCH): $(SINGLE_OBJS)
-	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE_SINGLE_MATCH) $(SINGLE_OBJS) $(addprefix -l,$(LIBS))
+	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE_SINGLE_MATCH) $(SINGLE_OBJS) -Wl,-Bstatic $(addprefix -l,$(SLIBS)) -Wl,-Bdynamic $(addprefix -l,$(DLIBS))
 
 $(EXECUTABLE_MULTI_MATCH): $(MULTI_OBJS)
-	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE_MULTI_MATCH) $(MULTI_OBJS) $(addprefix -l,$(LIBS))
+	$(CC) $(CFLAGS) $(addprefix -L,$(LIBPATHS))  -o $(EXECUTABLE_MULTI_MATCH) $(MULTI_OBJS) -Wl,-Bstatic $(addprefix -l,$(SLIBS)) -Wl,-Bdynamic $(addprefix -l,$(DLIBS))
 
 clean :
 	rm -rf *.d *.o *.lo $(EXECUTABLE_LOCAL_UPDATE) $(EXECUTABLE_SINGLE_MATCH) $(EXECUTABLE_MULTI_MATCH)
