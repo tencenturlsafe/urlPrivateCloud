@@ -6,7 +6,7 @@ INCS := ./include ../../include ../common
 LIBPATHS := ./lib ../../lib
 
 USER_MARCOS := _POSIX_THREADS _LINUX_OS_ _FILE_OFFSET_BITS=64
-CFLAGS = -Wall -static --no-strict-aliasing -g
+CFLAGS = -Wall --no-strict-aliasing -g
 CC = gcc -std=gnu99
 
 SOURCE := $(wildcard *.c)
