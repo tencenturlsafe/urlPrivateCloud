@@ -64,3 +64,22 @@
 3. 替换 match_demo/conf/licence.conf 为本机申请的licence.conf
 4. 执行 match_demo/script/match_monitor.sh 脚本，启动服务
 5. 执行 match_demo/bin/matchClient 测试客户端进行查询测试，输入参数为待匹配URL
+
+### 8. 简单工具的使用
+1. 单条查询 build/local_demo/ 下single_match 使用方法 ./single_match www.xxxx.com 
+   (1) 返回  url:www.xxxx.com       uiUrlType:1     uiEvilType:0    uiLevel:0
+2. 批量查询 multi_match 使用方法 ./multi_match urlFile saveFile
+   (1) urlFile ：网址文件，每行一条网址
+   (2) saveFile: 结果文件
+    
+### 9. 返回参数说明
+1. uiUrlType 反诈使用场景下可以忽略
+2. uiEvilType 标签类型，代表不同恶意类型。每个标签代表含义请联系服务方获取最新映射
+3. uiLevel 代表这条数据的黑级别 
+   (1) 1-3：可认为是路径黑
+   (2) 4：站点黑
+   (3) 5：域名黑
+
+### 10. 接口的二次开发
+1. 接口API的说明，详细见 https://github.com/tencenturlsafe/urlPrivateCloud/blob/master/include/urllibhandler.h
+2. 使用样例 详见 examples/online_demo/ 和 examples/local_demo/ 开发用例
