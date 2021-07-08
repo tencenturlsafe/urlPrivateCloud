@@ -88,3 +88,7 @@
 ### 10. 接口的二次开发
 1. 接口API的说明，详细见 https://github.com/tencenturlsafe/urlPrivateCloud/blob/master/include/urllibhandler.h
 2. 使用样例 详见 examples/online_demo/ 和 examples/local_demo/ 开发用例
+
+### 11. 常见错误说明
+1.运行single_match时,报错errcode 0x5:
+  原因：没有指定类型转换文件。解决方法：（1）下载文件https://github.com/tencenturlsafe/urlPrivateCloud.old/blob/master/doc/Type2Class.txt （2）licence.conf 增加 typeConvFile配置项指向这个文件路径就行了
