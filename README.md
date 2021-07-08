@@ -23,7 +23,12 @@
 
 1. 下载位于 tools/getInfo 的证书生成工具，于目标机器执行生成证书文件 licence.info
 2. 发送证书至腾讯网址私有云库负责人进行授权，成功授权后返回授权证书 licence.conf
-3. 使用SDK接口指定授权证书文件进行网址私有云服务初始化。
+3. 修改licence.conf中的日志输出路径为部署路径，具体方法如下，在证书顶部增加下面两行
+   - statPath=XXXXX/stat
+   - logPath=XXXXX/log/local_update.log
+   - 其中XXXXX填写安装的绝对路径，例如证书文件放在 /data/local_demo/conf/license.conf，那么XXXXX就是/data/local_demo
+   - 其中stat目录有更详细的更新信息
+4. 使用SDK接口指定授权证书文件进行网址私有云服务初始化。
 
 ### 4. 目录结构
 
