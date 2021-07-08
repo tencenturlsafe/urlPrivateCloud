@@ -91,4 +91,5 @@
 
 ### 11. 常见错误说明
 1.运行single_match时,报错errcode 0x5:
-  原因：没有指定类型转换文件。解决方法：（1）下载文件https://github.com/tencenturlsafe/urlPrivateCloud.old/blob/master/doc/Type2Class.txt （2）licence.conf 增加 typeConvFile配置项指向这个文件路径就行了
+  - 可能原因（1）：没有指定类型转换文件。解决方法：（1）下载文件https://github.com/tencenturlsafe/urlPrivateCloud.old/blob/master/doc/Type2Class.txt （2）licence.conf 增加 typeConvFile配置项指向这个文件路径就行了 
+  - 可能原因（2）：single_match应该放在主目录下的./bin目录中，否则无法读到证书，请注意
