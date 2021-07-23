@@ -61,6 +61,7 @@
    (2) 修改MAC变量为licence.conf的注册MAC地址
    (3) 修改FTP变量为本地FTP目录
 7. 启动 local_demo/script/sync_ftp.sh 脚本，查看同步是否异常
+8. sync_ftp.sh脚本作用是将离线库文件移动到 local_demo/data/ 目录下，部署时可以根据实际情况自行移动
 
 ### 7. UDP匹配服务Demo部署指引
 
