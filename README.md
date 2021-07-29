@@ -94,3 +94,13 @@
 1.运行single_match时,报错errcode 0x5:
   - 可能原因（1）：没有指定类型转换文件。解决方法：（1）下载文件https://github.com/tencenturlsafe/urlPrivateCloud.old/blob/master/doc/Type2Class.txt （2）licence.conf 增加 typeConvFile配置项指向这个文件路径就行了 
   - 可能原因（2）：single_match应该放在主目录下的./bin目录中，否则无法读到证书，请注意
+
+### 12. 基本操作
+1.重启引擎:
+  - (1) 执行 ps -ef | grep online_update | grep -v grep | cut -c 9-15 | xargs kill -s 9 
+  - (2) 执行 ./update_monitor.sh &
+2.新增检出类型
+  - (1) 在licence.conf 加入相应的标签配置，测试相应的网址是否能命中相应的标签，命中则说明
+  - (2) 清空相应的共享内存，重新导入恶意库。
+  - (3) 重启引擎
+
