@@ -101,6 +101,6 @@
   - (2) 执行 ./update_monitor.sh &
 2. 新增检出类型
   - (1) 在licence.conf 加入相应的标签配置，测试相应的网址是否能命中相应的标签，命中则说明
+  - (2) 执行命令关闭更新程序 ps -ef | grep online_update | grep -v grep | cut -c 9-15 | xargs kill -s 9
   - (2) 清空相应的共享内存，重新导入恶意库。
-  - (3) 重启引擎
-
+  - (3) 执行命令重启引擎 ./update_monitor.sh &
