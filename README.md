@@ -27,7 +27,7 @@
    - statPath=XXXXX/stat/
    - logPath=XXXXX/log/local_update.log
    - 其中XXXXX填写安装的绝对路径，例如证书文件放在 /data/local_demo/conf/license.conf，那么XXXXX就是/data/local_demo
-   - 其中stat目录有更详细的更新信息,注意：需要手动建立stat/的目录
+   - 其中stat目录有更详细的更新信息，注意：statPath以“/”结尾，且需要手动建立stat/的目录
 4. 使用SDK接口指定授权证书文件进行网址私有云服务初始化。
 
 ### 4. 目录结构
